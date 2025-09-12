@@ -1,14 +1,16 @@
-from typing import Optional
-
 from fastapi import FastAPI
+from app.core.settings import settings
+from app.routes import fixed, ask
 
-app = FastAPI()
+
+def include_router(app):
+    app.include_router(fixed.router)
+    app.include_router(ask.router)
 
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+def start_application():
+    app = FastAPI(title=settings.PROJECT_NAME, version=settings.PROJECT_VERSION)
+    include_router(app)
+    return app
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+app = start_application()

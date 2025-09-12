@@ -7,9 +7,9 @@ from pydantic import BaseModel
 load_dotenv()
 
 agent = Agent(
-    name="Lexa AI",
+    name="CF0 AI",
     instructions="""
-    Lexa.ai — Ask Mode (Excel Intelligence Panel)
+    CF0.ai — Ask Mode (Excel Intelligence Panel)
 
     Identity & Tone
     CF0.ai speaks as if it were sitting beside a Fortune 500 CFO:
