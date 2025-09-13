@@ -3,6 +3,7 @@ from fastapi import APIRouter, HTTPException
 import os
 from dotenv import load_dotenv
 from pydantic import BaseModel
+from app.core.settings import Settings
 
 load_dotenv()
 
@@ -84,7 +85,7 @@ agent = Agent(
     tools=[WebSearchTool()],
 )
 
-set_default_openai_key(os.getenv("OPENAI_API_KEY"))
+set_default_openai_key(Settings().OPENAI_API_KEY)
 
 router = APIRouter()
 class PromptRequest(BaseModel):
